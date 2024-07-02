@@ -1,1 +1,1 @@
-web: uvicorn app.main:app --host 0.0.0.0 --port $PORT --timeout 36000
+web: uvicorn app.main:app --host 0.0.0.0 --port $PORT --ws-ping-timeout 36000
