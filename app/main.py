@@ -11,6 +11,18 @@ app = FastAPI()
 API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
 gmaps = googlemaps.Client(key=API_KEY)
 
+def get_address_from_csv(row, df):
+    df_row = df.iloc[row]
+    tradingName = df_row['tradingname']
+    street = df_row['rua']
+    number = df_row['numero']
+    neighboor = df_row['bairro']
+    city = df_row['cidade']
+    state = df_row['estado']
+
+    address = f'{city}-{state}, {street} Nº {number}'
+    return (tradingName, address)
+
 async def get_coordinates_from_address_async(addr):
     loop = asyncio.get_event_loop()
     geocode_results = await loop.run_in_executor(None, gmaps.geocode, addr)
