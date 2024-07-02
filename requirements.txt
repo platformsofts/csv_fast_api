@@ -1,6 +1,5 @@
 fastapi
 pandas
 googlemaps
-uvicorn
 tenacity
 gunicorn
